@@ -15,6 +15,11 @@
 
 <body>
 
+  <div id="container">
+    <% for(let story in stories) { %>
+      <div><%= stories[story].title %></div>
+      <% } %>
+  </div>
 </body>
 
 </html>
