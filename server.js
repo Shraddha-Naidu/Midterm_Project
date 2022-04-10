@@ -7,6 +7,7 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+// const session = require('express-session');
 
 // PG database client/connection setup -- moved to db.js
 
@@ -28,6 +29,8 @@ app.use(
 );
 
 app.use(express.static("public"));
+// sessions middleware
+// app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -44,7 +47,8 @@ app.use('/stories', storiesRoutes(db))
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
+  console.log(req.session)
+  res.render("index")
 });
 
 app.listen(PORT, () => {
