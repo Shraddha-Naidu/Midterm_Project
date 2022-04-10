@@ -9,18 +9,5 @@
         <a class="nav-item nav-link" href="/">MY STORIES</a>
         <a class="nav-item nav-link" href="/">ALL STORIES</a>
         <a class="nav-item nav-link" href="/">CONTRIBUTIONS</a>
-      </div>
-    </div>
-    <% if (user) { %>
-    <form class="form-inline" action="/logout" method="POST">
-      <p>LOGGED IN: <%= user_id %></p>
-      <button type="sign-out" style="background-color: transparent; color: white; border-radius: 4px"class="btn btn-primary">SIGN OUT</button>
-    </form>
-    <% } else { %>
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" href="/login">LOGIN</a>
-        <a class="nav-item nav-link" href="/new_user">CREATE ACCOUNT</a>
-      </div>
-    <% } %>
   </nav>
 </header>
