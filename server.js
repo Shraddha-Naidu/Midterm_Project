@@ -48,7 +48,7 @@ app.use('/stories', storiesRoutes(db))
 
 app.get("/", (req, res) => {
   console.log(req.session)
-  res.render("index")
+  res.render("home");
 });
 
 app.listen(PORT, () => {

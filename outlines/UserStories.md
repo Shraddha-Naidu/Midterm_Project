@@ -9,4 +9,3 @@
 * As a user only I am able to mark my stories as completed and no longer allowing/receiving contributions
 
 
-* As a user I can share a story
