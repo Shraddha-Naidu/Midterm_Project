@@ -36,7 +36,6 @@ const storiesQueries = require('../lib/helperFunctions')
     });
     //route to create a new story
     router.post('/', (req, res) => {
-      console.log(req.body)
       storiesQueries.createNewStory(req.body.id, req.body.title, req.body.content)
       .then((story) => {
         res.send(story)
@@ -48,10 +47,17 @@ const storiesQueries = require('../lib/helperFunctions')
 
     //create a new contribution
     router.post('/:id/', (req, res) => {
-      console.log(req)
       storiesQueries.createNewContribution(req.body.user_id, req.body.story_id, req.body.content)
-    })
+      .then((contribution) => {
+        res.send(contribution)
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
+
+    });
+
     return router;
-  }
+    }
 
 module.exports = storiesRoutes;
