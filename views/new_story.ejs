@@ -16,6 +16,27 @@
     <%- include('partials/_header') %>
   </header>
 
+  <!--STORY INPUT AREA-->
+  <main>
+  <section class="new-story">
+    <p class="error-message"></p>
+    <form class="new-story-form">
+      <div class="title-input">
+        <label for="new-story-title">TITLE</label>
+        <textarea class="title-input" rows="1"></textarea>
+      </div>
+      <div class="story-text-input">
+        <label for="new-story-text">STORY</label>
+        <textarea class="story-text-input" rows="4"></textarea>
+      </div>
+      <div class="story-input-footer">
+        <button type="submit">CREATE</button>
+        <output class="counter" id="char-count">150</output>
+      </div>
+    </form>
+  </section>
+</main>
+
   <!-- Bootstrap JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
