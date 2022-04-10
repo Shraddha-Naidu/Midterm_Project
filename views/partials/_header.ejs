@@ -1,0 +1,26 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">SITE NAME</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="/">MY STORIES</a>
+        <a class="nav-item nav-link" href="/">ALL STORIES</a>
+        <a class="nav-item nav-link" href="/">CONTRIBUTIONS</a>
+      </div>
+    </div>
+    <% if (user) { %>
+    <form class="form-inline" action="/logout" method="POST">
+      <p>LOGGED IN: <%= user_id %></p>
+      <button type="sign-out" style="background-color: transparent; color: white; border-radius: 4px"class="btn btn-primary">SIGN OUT</button>
+    </form>
+    <% } else { %>
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="/login">LOGIN</a>
+        <a class="nav-item nav-link" href="/new_user">CREATE ACCOUNT</a>
+      </div>
+    <% } %>
+  </nav>
+</header>
