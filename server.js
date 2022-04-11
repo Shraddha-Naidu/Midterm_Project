@@ -30,16 +30,18 @@ app.use(
 
 app.use(express.static("public"));
 // sessions middleware
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
+//app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const storiesRoutes = require('./routes/stories');
+const registrationRoutes = require('./routes/registration');
 const db = require('./lib/db')
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use('/stories', storiesRoutes(db))
+app.use('/registration', registrationRoutes(db))
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -48,7 +50,7 @@ app.use('/stories', storiesRoutes(db))
 
 app.get("/", (req, res) => {
   console.log(req.session)
-  res.render("home");
+  res.render("login");
 });
 
 app.listen(PORT, () => {

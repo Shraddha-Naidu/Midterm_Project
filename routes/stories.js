@@ -71,6 +71,13 @@ const storiesQueries = require('../lib/helperFunctions')
         })
     });
 
+
+    //Route to create new story
+    router.get("/stories/new", (req, res) => {
+      storiesQueries.createNewStory(req.body.id, req.body.title, req.body.content);
+     res.render("new_story");
+  });
+
     //route to create a new story
     router.post('/', (req, res) => {
       storiesQueries.createNewStory(req.body.id, req.body.title, req.body.content)

@@ -12,8 +12,9 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" /> -->
+  <link rel="stylesheet" href="/styles/stories.css" type="text/css" />
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -23,11 +24,23 @@
   <header>
     <%- include('partials/_header') %>
   </header>
+  <h2 class="page-title">STORIES</h2>
 
-  <div id="user-stories-container">
-    <% for(let story in stories) { %>
-      <div><%= stories[story].title %></div>
-      <% } %>
+  <div class="all-stories-container">
+    <table>
+      <tr>
+      <section class="single-story-container">
+      <% for(let story in stories) { %>
+        <header>
+         <div class="title"><%= stories[story].title %></div>
+         <div class="creator">Created By: <%= stories[story].owner_id %></div>
+         <div class="completed">Completed: <%= stories[story].IsComplete %></div>
+        </header>
+        <div class="content"><%= stories[story].content %></div>
+       <% } %>
+      </section>
+   </tr>
+  </table>
   </div>
 
   <!-- Bootstrap JavaScript Bundle with Popper -->
