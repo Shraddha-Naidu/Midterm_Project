@@ -37,6 +37,7 @@ app.use(express.static("public"));
 const storiesRoutes = require('./routes/stories');
 const registrationRoutes = require('./routes/registration');
 const db = require('./lib/db')
+const validate = require('./lib/validation')
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -52,6 +53,11 @@ app.get("/", (req, res) => {
   console.log(req.session)
   res.render("login");
 });
+
+app.post('/', (req, res) => {
+  console.log(req.body)
+  validate.validateUser(req.body.email, req.password)
+})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
