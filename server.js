@@ -33,14 +33,26 @@ app.use(
 
 app.use(express.static("public"));
 // sessions middleware
+<<<<<<< HEAD
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
+=======
+//app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
+
+// Separated Routes for each Resource
+// Note: Feel free to replace the example routes below with your own
+const storiesRoutes = require('./routes/stories');
+const registrationRoutes = require('./routes/registration');
+const db = require('./lib/db')
+const validate = require('./lib/validation')
+>>>>>>> 5967a8d2462d4d7c0285773751ac010cc7edd3bf
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use('/stories', storiesRoutes(db))
+app.use('/registration', registrationRoutes(db))
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -48,13 +60,23 @@ app.use('/stories', storiesRoutes(db))
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
+<<<<<<< HEAD
   getRandomStory().then((data) => {
     const storyTitle = data[0].title;
     const storyContent = data[0].content;
     const templateVars = { storyTitle, storyContent }
     res.render("home", templateVars);
   })
+=======
+  console.log(req.session)
+  res.render("login");
+>>>>>>> 5967a8d2462d4d7c0285773751ac010cc7edd3bf
 });
+
+app.post('/', (req, res) => {
+  console.log(req.body)
+  validate.validateUser(req.body.email, req.password)
+})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

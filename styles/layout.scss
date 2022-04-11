@@ -4,3 +4,58 @@ body,
 html {
   margin: 0;
 }
+
+#upvote_arrow{
+  padding-bottom: .5em;
+  &:hover {
+    color: greenyellow
+  }
+}
+
+.jumbotron {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3em;
+}
+
+.story_container{
+  border: .5em solid black;
+  // margin-top: 2em;
+  margin-bottom: 2em
+}
+
+.parchment {
+  display: flex;
+  flex-direction: column;
+  // position:absolute;
+    width: 75%;
+  // min-height: calc((1vw + 1vh) * 75);
+  /* center page with absolute position */
+  justify-content: center;
+  top: 0%; left: 50%;
+  // transform: translate(-50%, 0);
+  margin: 2em 0;
+    padding: 4em;
+    box-shadow: 2px 3px 20px black, 0 0 60px #8a4d0f inset;
+    background: #fffef0;
+  // filter: url(#wavy2);
+}
+
+#contribution_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // align-items: center;
+  width: 75%;
+  margin: auto;
+}
+
+.submit_buttons {
+  display:flex;
+  justify-content: space-between;
+  padding: 0.5em 0;
+}
+
+.submit_buttons button {
+  border: none;
+}

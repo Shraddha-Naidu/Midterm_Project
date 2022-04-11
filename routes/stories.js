@@ -4,6 +4,7 @@ const router = express.Router();
 const db = require('../lib/db')
 const storiesQueries = require('../lib/helperFunctions')(db);
 
+<<<<<<< HEAD
 
 //
 const storiesRoutes = (db) => {
@@ -39,6 +40,86 @@ const storiesRoutes = (db) => {
   //route to create a new story
   router.post('/', (req, res) => {
     storiesQueries.createNewStory(req.body.id, req.body.title, req.body.content)
+=======
+  //
+  const storiesRoutes = (db) => {
+    //get all stories
+    router.get('/', (req, res) => {
+      storiesQueries.getAllStories()
+        .then((stories) => {
+          const templateVars = {stories}
+          res.render('stories', templateVars);
+        })
+        .catch((err) => {
+          res.render()
+            .send(500);
+        })
+    });
+
+    //get a story by id
+    // router.get('/:id', (req, res) => {
+    //   const getStory = storiesQueries.getStoryById(req.params.id)
+    //   const getContributions = storiesQueries.getAllContributions(req.params.id)
+    //   Promise.all([getStory, getContributions])
+    //     .then((values) => {
+    //       const templateVars = {
+    //         story: values[0],
+    //         contributions: values[1]
+    //       }
+    //       console.log(templateVars)
+    //       res.render('story', templateVars)
+    //     })
+    //     .catch((err) => {
+    //       res.send(500);
+    //     })
+    // });
+
+    //get a story by id
+    router.get('/:id', (req, res) => {
+      storiesQueries.getStoryById(req.params.id)
+        .then((values) => {
+          const templateVars = {
+            story: values,
+          }
+          res.render('story', templateVars)
+        })
+        .catch((err) => {
+          res.send(500);
+        })
+    });
+
+    //get a contributions by story id
+    router.get('/:id/contributions', (req, res) => {
+      storiesQueries.getAllContributions(req.params.id)
+        .then((stories) => {
+          res.json(stories);
+        })
+        .catch((err) => {
+          res.send(500);
+        })
+    });
+
+    router.post('/:id/contributions', (req, res) => {
+      storiesQueries.addUpvote(req.params.id, req.body.user_id)
+        .then((stories) => {
+          res.json(stories);
+        })
+        .catch((err) => {
+          res.send(500);
+        })
+    });
+
+
+    //Route to create new story
+    router.get("/stories/new", (req, res) => {
+      storiesQueries.createNewStory(req.body.id, req.body.title, req.body.content);
+     res.render("new_story");
+  });
+
+    //route to create a new story
+    router.post('/', (req, res) => {
+      storiesQueries.createNewStory(req.body.id, req.body.title, req.body.content)
+>>>>>>> 5967a8d2462d4d7c0285773751ac010cc7edd3bf
       .then((story) => {
         res.send(story)
       })
