@@ -26,17 +26,21 @@
   </header>
   <h2 class="page-title">STORIES</h2>
 
-  <div class="all-stories-container" style="border: 5px black;">
-    <article class="single-story-container">
-    <% for(let story in stories) { %>
-      <header>
-        <div class="title"><%= stories[story].title %></div>
-        <div class="creator">Created By: <%= stories[story].owner_id %></div>
-        <div class="completed">Completed: <%= stories[story].IsComplete %></div>
-      </header>
-      <div class="content"><%= stories[story].content %></div>
-      <% } %>
-    </article>
+  <div class="all-stories-container">
+    <table>
+      <tr>
+      <section class="single-story-container">
+      <% for(let story in stories) { %>
+        <header>
+         <div class="title"><%= stories[story].title %></div>
+         <div class="creator">Created By: <%= stories[story].owner_id %></div>
+         <div class="completed">Completed: <%= stories[story].IsComplete %></div>
+        </header>
+        <div class="content"><%= stories[story].content %></div>
+       <% } %>
+      </section>
+   </tr>
+  </table>
   </div>
 
   <!-- Bootstrap JavaScript Bundle with Popper -->
