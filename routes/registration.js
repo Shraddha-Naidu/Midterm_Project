@@ -3,7 +3,7 @@ const router = express.Router();
 
 const registrationRoutes = (db) => {
   router.get("/", (req, res) => {
-    console.log("registration route");
+    console.log("registration route")
     res.render("registration")
   })
 
