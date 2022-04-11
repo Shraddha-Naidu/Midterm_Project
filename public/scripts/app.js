@@ -1,26 +1,24 @@
-// Client facing scripts here
-$(document).ready(function() {
 
-  const renderStories = function(stories) {
-    for (const story of stories) {
-      const $story = createTweetElement(tweet);
-      $('#container').prepend($story);
-    };
-  }
-
-  const createStoryElement = (story) => {
-    `<article class='story_container>
-      <header>${story.title}
-      </header>
-
-    </article>
-    `
-  }
-
-  const loadStories = () => {
-    $.get('/stories', data => {
-      console.log(data)
-    })
-  }
-
+//toggle register form
+$(() => {
+  $('#register-button').click(() => {
+    if ($('#register-form-id').hasClass('register-form')) {
+      $('#register-form-id').slideUp('slow').toggleClass('register-form');
+    } else {
+      $('#register-form-id').slideDown('slow').toggleClass('register-form');
+    }
+  });
 });
+
+// toggle login form
+$(() => {
+  $('#login-button').click(() => {
+    if ($('#login-form-id').hasClass('login-form')) {
+      $('#login-form-id').slideUp('slow').toggleClass('login-form');
+    } else {
+      $('#login-form-id').slideDown('slow').toggleClass('login-form');
+    }
+  });
+});
+
+
