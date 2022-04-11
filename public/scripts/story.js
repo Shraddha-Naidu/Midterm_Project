@@ -3,6 +3,7 @@ $(document).ready(function() {
   //GET request to pull all contributions
   const retrieveContributions = () => {
     $.get(`/stories/${storyId}/contributions`, function(data) {
+      console.log(data)
     renderContributions(data)
     })
   }
@@ -36,6 +37,7 @@ $(document).ready(function() {
       `
   });
 
+  //on click, upvote triggers
   $('#contributions-container').on('click', '#upvote_arrow', (event) => {
     console.log($(event.target).closest('.card').attr('id'))
 
@@ -45,4 +47,16 @@ $(document).ready(function() {
       retrieveContributions()
     })
   });
+
+  //on click, add new contribution
+  $('#contribution_form').on('submit', function(e) {
+    e.preventDefault();
+    let val = $('#contribution_text').val();
+    let contributionContent = $(this).serialize();
+    $.post(`/stories/${storyId}`, { user_id: 1, story_id: `${storyId}`, content: val}, function(data) {
+      console.log('data', data)
+      $('#contributions-container').empty();
+      retrieveContributions()
+    })
+  })
 });

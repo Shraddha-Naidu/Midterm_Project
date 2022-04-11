@@ -35,12 +35,11 @@
       <p class="lead"><%= story.content %></p>
     </div>
   </div>
-  <form class="contribution_form">
-    <label for="contribution_text">New Contribution</label>
-    <textarea id="contribution_text" rows=1></textarea>
-    <div class="tweet_buttons">
+  <form id="contribution_form">
+    <textarea id="contribution_text" rows=1 placeholder="New Contribution" name="text"></textarea>
+    <div class="submit_buttons">
       <button type="submit">Add</button>
-      <output name="counter" class="counter" for="tweet-text">255</output>
+      <output name="counter" class="counter" for="text_area">255</output>
     </div>
   </form>
 

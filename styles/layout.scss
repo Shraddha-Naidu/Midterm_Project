@@ -41,7 +41,7 @@ html {
   // filter: url(#wavy2);
 }
 
-.contribution_form {
+#contribution_form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,22 +50,12 @@ html {
   margin: auto;
 }
 
-.tweet_buttons {
+.submit_buttons {
   display:flex;
   justify-content: space-between;
   padding: 0.5em 0;
-  font-family: bungee;
-  > button {
-    border: 0;
-    background-color: layout.$primaryheader-color;
-    color: layout.$bodybackground-color;
-    &:hover {
-      color: layout.$bodybackground-color;
-        box-shadow: 3px 3px rgb(1, 5, 36), 2px 2px rgb(1, 5, 36), 1px 1px rgb(1, 5, 36);
-        border: 1px solid rgb(1, 5, 36);
-    }
-    &:active {
-      transform: translate(3px, 3px);
-    }
-  }
+}
+
+.submit_buttons button {
+  border: none;
 }
