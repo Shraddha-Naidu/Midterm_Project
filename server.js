@@ -30,7 +30,7 @@ app.use(
 
 app.use(express.static("public"));
 // sessions middleware
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
+//app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
