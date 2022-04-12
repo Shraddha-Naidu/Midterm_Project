@@ -8,9 +8,6 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const session = require("express-session");
-const storiesRoutes = require('./routes/stories');
-const db = require('./lib/db')
-const { getRandomStory } = require('./lib/helperFunctions')(db);
 
 // PG database client/connection setup -- moved to db.js
 
@@ -33,13 +30,7 @@ app.use(
 
 app.use(express.static("public"));
 // sessions middleware
-<<<<<<< HEAD
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }));
-
-// Separated Routes for each Resource
-// Note: Feel free to replace the example routes below with your own
-=======
-//app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -47,7 +38,7 @@ const storiesRoutes = require('./routes/stories');
 const registrationRoutes = require('./routes/registration');
 const db = require('./lib/db')
 const validate = require('./lib/validation')
->>>>>>> 5967a8d2462d4d7c0285773751ac010cc7edd3bf
+const { getRandomStory } = require('./lib/helperFunctions')(db);
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -60,17 +51,14 @@ app.use('/registration', registrationRoutes(db))
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-<<<<<<< HEAD
   getRandomStory().then((data) => {
     const storyTitle = data[0].title;
     const storyContent = data[0].content;
     const templateVars = { storyTitle, storyContent }
     res.render("home", templateVars);
   })
-=======
-  console.log(req.session)
-  res.render("login");
->>>>>>> 5967a8d2462d4d7c0285773751ac010cc7edd3bf
+  // console.log(req.session)
+  // res.render("login");
 });
 
 app.post('/', (req, res) => {

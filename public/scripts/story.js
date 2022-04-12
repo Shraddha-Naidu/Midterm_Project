@@ -39,10 +39,10 @@ $(document).ready(function() {
 
   //on click, upvote triggers
   $('#contributions-container').on('click', '#upvote_arrow', (event) => {
-    console.log($(event.target).closest('.card').attr('id'))
+    let contributionId = $(event.target).closest('.card').attr('id')
+    console.log(contributionId)
 
-    $.post(`/stories/${storyId}/contributions`, {user_id:1}, function(data) {
-      console.log('callback working');
+    $.post(`/stories/${storyId}/contributions`, {user_id:1, cont_id: contributionId}, function(data) {
       $('#contributions-container').empty();
       retrieveContributions()
     })

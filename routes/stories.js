@@ -4,43 +4,6 @@ const router = express.Router();
 const db = require('../lib/db')
 const storiesQueries = require('../lib/helperFunctions')(db);
 
-<<<<<<< HEAD
-
-//
-const storiesRoutes = (db) => {
-  //get all stories
-  router.get('/', (req, res) => {
-    storiesQueries.getAllStories()
-      .then((stories) => {
-        const templateVars = { stories }
-        res.render('stories', templateVars);
-      })
-      .catch((err) => {
-        res.render()
-          .send(500);
-      })
-  });
-  //get a story by id
-  router.get('/:id', (req, res) => {
-    const getStory = storiesQueries.getStoryById(req.params.id)
-    const getContributions = storiesQueries.getAllContributions(req.params.id)
-    Promise.all([getStory, getContributions])
-      .then((values) => {
-        console.log(values)
-        const templateVars = {
-          story: values[0],
-          contributions: values[1]
-        }
-        res.render('story', templateVars);
-      })
-      .catch((err) => {
-        res.send(500);
-      })
-  });
-  //route to create a new story
-  router.post('/', (req, res) => {
-    storiesQueries.createNewStory(req.body.id, req.body.title, req.body.content)
-=======
   //
   const storiesRoutes = (db) => {
     //get all stories
@@ -100,7 +63,8 @@ const storiesRoutes = (db) => {
     });
 
     router.post('/:id/contributions', (req, res) => {
-      storiesQueries.addUpvote(req.params.id, req.body.user_id)
+      console.log(req.body)
+      storiesQueries.addUpvote(req.body.cont_id, req.body.user_id)
         .then((stories) => {
           res.json(stories);
         })
@@ -119,7 +83,6 @@ const storiesRoutes = (db) => {
     //route to create a new story
     router.post('/', (req, res) => {
       storiesQueries.createNewStory(req.body.id, req.body.title, req.body.content)
->>>>>>> 5967a8d2462d4d7c0285773751ac010cc7edd3bf
       .then((story) => {
         res.send(story)
       })
