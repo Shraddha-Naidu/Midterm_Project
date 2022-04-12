@@ -1,8 +1,7 @@
 //routes for stories
 const express = require('express');
 const router = express.Router();
-const db = require('../lib/db')
-const storiesQueries = require('../lib/helperFunctions')(db);
+const storiesQueries = require('../lib/helperFunctions')
 
   //
   const storiesRoutes = (db) => {
@@ -63,8 +62,7 @@ const storiesQueries = require('../lib/helperFunctions')(db);
     });
 
     router.post('/:id/contributions', (req, res) => {
-      console.log(req.body)
-      storiesQueries.addUpvote(req.body.cont_id, req.body.user_id)
+      storiesQueries.addUpvote(req.params.id, req.body.user_id)
         .then((stories) => {
           res.json(stories);
         })
@@ -73,12 +71,12 @@ const storiesQueries = require('../lib/helperFunctions')(db);
         })
     });
 
-
+/*
     //Route to create new story
     router.get("/stories/new", (req, res) => {
       storiesQueries.createNewStory(req.body.id, req.body.title, req.body.content);
      res.render("new_story");
-  });
+  }); */
 
     //route to create a new story
     router.post('/', (req, res) => {
@@ -89,11 +87,11 @@ const storiesQueries = require('../lib/helperFunctions')(db);
       .catch((err) => {
         console.log(err.message)
       })
-  });
+    });
 
-  //create a new contribution
-  router.post('/:id/', (req, res) => {
-    storiesQueries.createNewContribution(req.body.user_id, req.body.story_id, req.body.content)
+    //create a new contribution
+    router.post('/:id/', (req, res) => {
+      storiesQueries.createNewContribution(req.body.user_id, req.body.story_id, req.body.content)
       .then((contribution) => {
         res.send(contribution)
       })
@@ -101,9 +99,9 @@ const storiesQueries = require('../lib/helperFunctions')(db);
         console.log(err.message)
       })
 
-  });
+    });
 
-  return router;
-}
+    return router;
+    }
 
 module.exports = storiesRoutes;
