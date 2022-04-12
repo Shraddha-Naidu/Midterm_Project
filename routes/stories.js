@@ -37,6 +37,7 @@ const storiesQueries = require('../lib/helperFunctions')(db);
         .then((values) => {
           const templateVars = {
             story: values,
+            user_id: req.session.userid
           }
           res.render('story', templateVars)
         })
@@ -66,13 +67,6 @@ const storiesQueries = require('../lib/helperFunctions')(db);
           res.send(500);
         })
     });
-
-
-    //Route to create new story
-  //   router.get("/stories/new", (req, res) => {
-  //     storiesQueries.createNewStory(req.body.id, req.body.title, req.body.content);
-  //    res.render("new_story");
-  // });
 
     //route to create a new story
     router.post('/', (req, res) => {
