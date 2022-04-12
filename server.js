@@ -8,6 +8,8 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const session = require("express-session");
+// sessions middleware
+app.use(session({ secret: 'keyboard tester', cookie: { maxAge: 60000 }}))
 
 // PG database client/connection setup -- moved to db.js
 
@@ -29,8 +31,6 @@ app.use(
 );
 
 app.use(express.static("public"));
-// sessions middleware
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -61,18 +61,19 @@ app.get("/", (req, res) => {
 
 //login route
 app.post('/', (req, res) => {
+  console.log(req.body)
   validateUser(req.body.email)
     .then((value) => {
       if(value.password === req.body.password) {
-        req.session.user_id = value.id
-        console.log('login successful')
+        req.session.userid = value.id
+        console.log('login successful', req.session.userid)
         res.redirect('/stories')
       } else {
         res.send(401)
       }
     })
     .catch((err) => {
-      console.log(err.message)
+      res.send('invalid us/pw')
     })
 })
 

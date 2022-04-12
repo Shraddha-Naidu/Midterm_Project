@@ -9,7 +9,7 @@ const storiesQueries = require('../lib/helperFunctions')(db);
 
     //custom middleware
     router.use((req,res, next) => {
-      if(!req.session.user_id) {
+      if(!req.session.userid) {
         res.redirect('/');
       } else {
         next();
@@ -32,7 +32,7 @@ const storiesQueries = require('../lib/helperFunctions')(db);
 
     //get a story by id
     router.get('/:id', (req, res) => {
-      console.log(req.session.user_id)
+      console.log('userid is ', req.session.userid)
       storiesQueries.getStoryById(req.params.id)
         .then((values) => {
           const templateVars = {
@@ -69,10 +69,10 @@ const storiesQueries = require('../lib/helperFunctions')(db);
 
 
     //Route to create new story
-    router.get("/stories/new", (req, res) => {
-      storiesQueries.createNewStory(req.body.id, req.body.title, req.body.content);
-     res.render("new_story");
-  });
+  //   router.get("/stories/new", (req, res) => {
+  //     storiesQueries.createNewStory(req.body.id, req.body.title, req.body.content);
+  //    res.render("new_story");
+  // });
 
     //route to create a new story
     router.post('/', (req, res) => {
