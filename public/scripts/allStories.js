@@ -1,12 +1,12 @@
-/*JQuery*/
+/* /*JQuery*/
 //DOM ready
 
-$(document).ready(function () {
+/* $(document).ready(function () { */
 /* //Returns creator name
 const author = function(users){
 
 }; */
-
+/*
 //Creates template for each Story
 const createStoryElement = function(storyData) {
 
@@ -45,10 +45,12 @@ const loadStories = function () {
 //Loads tweets from db
 loadStories();
 
-$(".new-story-form").submit(function (event) {
+
+//Loads new Story on submit
+$( "form" ).submit(function (event) {
   event.preventDefault();//prevents default submission behaviour
 
-  if(!$(".input-tweet").val()) {
+  if(!$(".input-").val()) {
     $(".error-message").html("Invalid! Please try again!").fadeIn(200).fadeOut(3500);
   } else if ($(".input-tweet").val().length > 140) {
     $(".error-message").html(`Uh Oh 🙃 Too many characters, please shorten!`).fadeIn(200).fadeOut(3500);
@@ -60,7 +62,6 @@ $(".new-story-form").submit(function (event) {
     }).then(() => {
         loadTweets();
         $(".input-tweet").val("")
-        $("#char-count").text(140);
       })
 
   };
@@ -68,3 +69,4 @@ $(".new-story-form").submit(function (event) {
 
 
 });
+ */
