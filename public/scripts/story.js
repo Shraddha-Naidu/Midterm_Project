@@ -3,7 +3,6 @@ $(document).ready(function() {
   //GET request to pull all contributions
   const retrieveContributions = () => {
     $.get(`/stories/${storyId}/contributions`, function(data) {
-      console.log(data)
     renderContributions(data)
     })
   }
@@ -40,9 +39,7 @@ $(document).ready(function() {
   //on click, upvote triggers
   $('#contributions-container').on('click', '#upvote_arrow', (event) => {
     let contributionId = $(event.target).closest('.card').attr('id')
-    console.log(contributionId)
-
-    $.post(`/stories/${storyId}/contributions`, {user_id:1, cont_id: contributionId}, function(data) {
+    $.post(`/stories/${storyId}/contributions`, {user_id:req.session.user_id, cont_id: contributionId}, function(data) {
       $('#contributions-container').empty();
       retrieveContributions()
     })
@@ -53,8 +50,7 @@ $(document).ready(function() {
     e.preventDefault();
     let val = $('#contribution_text').val();
     let contributionContent = $(this).serialize();
-    $.post(`/stories/${storyId}`, { user_id: 1, story_id: `${storyId}`, content: val}, function(data) {
-      console.log('data', data)
+    $.post(`/stories/${storyId}`, { user_id: req.session.user_id, story_id: `${storyId}`, content: val}, function(data) {
       $('#contributions-container').empty();
       retrieveContributions()
     })

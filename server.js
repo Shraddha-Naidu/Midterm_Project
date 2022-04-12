@@ -37,7 +37,7 @@ app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
 const storiesRoutes = require('./routes/stories');
 const registrationRoutes = require('./routes/registration');
 const db = require('./lib/db')
-const validate = require('./lib/validation')
+const { validateUser } = require('./lib/validation')(db);
 const { getRandomStory } = require('./lib/helperFunctions')(db);
 
 // Mount all resource routes
@@ -57,13 +57,23 @@ app.get("/", (req, res) => {
     const templateVars = { storyTitle, storyContent }
     res.render("home", templateVars);
   })
-  // console.log(req.session)
-  // res.render("login");
 });
 
+//login route
 app.post('/', (req, res) => {
-  console.log(req.body)
-  validate.validateUser(req.body.email, req.password)
+  validateUser(req.body.email)
+    .then((value) => {
+      if(value.password === req.body.password) {
+        req.session.user_id = value.id
+        console.log('login successful')
+        res.redirect('/stories')
+      } else {
+        res.send(401)
+      }
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
 })
 
 app.listen(PORT, () => {

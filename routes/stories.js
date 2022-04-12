@@ -6,6 +6,17 @@ const storiesQueries = require('../lib/helperFunctions')(db);
 
   //
   const storiesRoutes = (db) => {
+
+    //custom middleware
+    router.use((req,res, next) => {
+      if(!req.session.user_id) {
+        res.redirect('/');
+      } else {
+        next();
+      }
+
+    })
+
     //get all stories
     router.get('/', (req, res) => {
       storiesQueries.getAllStories()
@@ -20,25 +31,8 @@ const storiesQueries = require('../lib/helperFunctions')(db);
     });
 
     //get a story by id
-    // router.get('/:id', (req, res) => {
-    //   const getStory = storiesQueries.getStoryById(req.params.id)
-    //   const getContributions = storiesQueries.getAllContributions(req.params.id)
-    //   Promise.all([getStory, getContributions])
-    //     .then((values) => {
-    //       const templateVars = {
-    //         story: values[0],
-    //         contributions: values[1]
-    //       }
-    //       console.log(templateVars)
-    //       res.render('story', templateVars)
-    //     })
-    //     .catch((err) => {
-    //       res.send(500);
-    //     })
-    // });
-
-    //get a story by id
     router.get('/:id', (req, res) => {
+      console.log(req.session.user_id)
       storiesQueries.getStoryById(req.params.id)
         .then((values) => {
           const templateVars = {
