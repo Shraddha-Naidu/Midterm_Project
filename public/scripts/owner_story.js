@@ -44,14 +44,32 @@ $(document).ready(function() {
         data: {storyId: storyId, content: data.content},
         success: function(data) {
         $('.lead').text(data.content)
+        clearContributions(storyId)
         }
       });
     });
-
-
-  //
-  //   retrieveContributions()
     })
 
+  // complete button, triggers patch update
+  $('#complete_button').on('click', () => {
+    $.ajax({
+      type: 'PATCH',
+      url: `/stories/${storyId}`,
+      success: function(data) {
+        clearContributions(storyId)
+      }
+    });
+  })
+
+  const clearContributions = (story_id) => {
+    $.ajax({
+      type: 'DELETE',
+      url: `/stories/${storyId}/contributions`,
+      success: (deleted) => {
+        console.log(deleted)
+        $('#contributions-container').empty()
+      }
+    })
+  }
 
 });

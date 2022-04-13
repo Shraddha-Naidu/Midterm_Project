@@ -72,6 +72,7 @@ const storiesQueries = require('../lib/helperFunctions')(db);
         })
     });
 
+    //record upvotes on contribution
     router.post('/:id/contributions', (req, res) => {
       storiesQueries.addUpvote(req.body.cont_id, req.body.user_id)
         .then((stories) => {
@@ -82,7 +83,18 @@ const storiesQueries = require('../lib/helperFunctions')(db);
         })
     });
 
-    //patch to story
+    //delete contributions
+    router.delete('/:id/contributions', (req, res) => {
+      storiesQueries.deleteContributions(req.params.id)
+        .then((deleted) => {
+          res.json(deleted);
+        })
+        .catch((err) => {
+          res.send(500);
+        })
+    });
+
+    //patch to add contribution to story
     router.patch('/:id/contributions', (req, res) => {
       console.log('here is the content', req.body.content)
       console.log('here is the id', req.body.storyId)
@@ -104,6 +116,18 @@ const storiesQueries = require('../lib/helperFunctions')(db);
       .catch((err) => {
         console.log(err.message)
       })
+  });
+
+  //complete a story
+  router.patch('/:id/', (req, res) => {
+    storiesQueries.completeStory(req.params.id)
+      .then((value) => {
+        res.send(value)
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
+
   });
 
   //create a new contribution
