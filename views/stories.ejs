@@ -33,7 +33,7 @@
       <section class="single-story-container">
       <% for(let story in stories) { %>
         <header>
-         <div class="title"><%= stories[story].title %></div>
+         <div class="title"><a href="/:{<%stories[story].story_id%>}"><%= stories[story].title %></a></div>
          <div class="creator">Created By: <%= stories[story].owner_id %></div>
          <div class="completed">Completed: <%= stories[story].IsComplete %></div>
         </header>
