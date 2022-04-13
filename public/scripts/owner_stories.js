@@ -40,7 +40,7 @@ const loadStories = function () {
 $(document).ready(function () {
 
 //Loads tweets from db
-loadTweets();
+loadStories();
 
 // New submitted tweet
 $(".all-stories-container").submit(function (event) {
