@@ -22,6 +22,7 @@ const storiesQueries = require('../lib/helperFunctions')(db);
       storiesQueries.getAllStories()
         .then((stories) => {
           const templateVars = {stories}
+          console.log(templateVars)
           res.render('stories', templateVars);
         })
         .catch((err) => {
@@ -34,7 +35,6 @@ const storiesQueries = require('../lib/helperFunctions')(db);
     router.get('/:id', (req, res) => {
       storiesQueries.getStoryById(req.params.id)
         .then((values) => {
-          console.log('story', values)
           const templateVars = {
             story: values,
             user_id: req.session.userid
@@ -96,8 +96,6 @@ const storiesQueries = require('../lib/helperFunctions')(db);
 
     //patch to add contribution to story
     router.patch('/:id/contributions', (req, res) => {
-      console.log('here is the content', req.body.content)
-      console.log('here is the id', req.body.storyId)
       storiesQueries.selectContribution(req.body.storyId, req.body.content)
         .then((stories) => {
           res.json(stories);

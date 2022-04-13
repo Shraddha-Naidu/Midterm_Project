@@ -9,7 +9,15 @@ const app = express();
 const morgan = require("morgan");
 const session = require("express-session");
 // sessions middleware
-app.use(session({ secret: 'keyboard tester',  cookie: { maxAge: 60000 }, maxAge: 30*24*60*60*1000 })) // Rememeber 'me' for 30 days
+app.use(session(
+  { 
+    secret: 'keyboard tester',  
+    cookie: { maxAge: 60000 }, 
+    maxAge: 30*24*60*60*1000,
+    resave: false,
+    saveUninitialized: true
+  }
+)) // Rememeber 'me' for 30 days
 
 // PG database client/connection setup -- moved to db.js
 
@@ -61,7 +69,6 @@ app.get("/", (req, res) => {
 
 //login route
 app.post('/', (req, res) => {
-  console.log(req.body)
   validateUser(req.body.email)
     .then((value) => {
       if(value.password === req.body.password) {
