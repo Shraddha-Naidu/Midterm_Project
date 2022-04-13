@@ -19,7 +19,7 @@
 
   <!--STORY INPUT AREA-->
   <main>
-    <p>Start a <a onclick="createFunction">New Story</a></p>
+    <p>Start a <a onclick="createFunction" href="#">New Story</a></p>
   <section class="new-story" id="create-story">
     <p class="error-message"></p>
     <form class="new-story-form">
@@ -62,5 +62,11 @@
       }
     };
   </script>
+ <!--  <script>
+    $("#reply").click(function() {
+    $('#replyuser').toggle();
+   ($(this).text() === "reply") ? $(this).text("") : $(this).text("reply");
+});
+  </script> -->
 </body>
 </html>
