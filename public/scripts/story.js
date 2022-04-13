@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-  console.log(user_id)
-
   //GET request to pull all contributions
   const retrieveContributions = () => {
     $.get(`/stories/${storyId}/contributions`, function(data) {
@@ -10,8 +8,6 @@ $(document).ready(function() {
   }
 
   retrieveContributions();
-
-  //GET request to pull upvotes
 
   //loop to render each contribution
   const renderContributions = (contributions) => {
@@ -57,4 +53,8 @@ $(document).ready(function() {
       retrieveContributions()
     })
   })
+
+
 });
+
+// module.exports = { retrieveContributions, renderContribution, renderContributions }

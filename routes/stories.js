@@ -39,7 +39,11 @@ const storiesQueries = require('../lib/helperFunctions')(db);
             story: values,
             user_id: req.session.userid
           }
+          if(req.session.userid === values.owner_id) {
+            res.render('owner_story', templateVars)
+          } else {
           res.render('story', templateVars)
+          }
         })
         .catch((err) => {
           res.send(500);
@@ -57,9 +61,32 @@ const storiesQueries = require('../lib/helperFunctions')(db);
         })
     });
 
+    //get a contributions text by story id
+    router.get('/:id/contributions/text', (req, res) => {
+      storiesQueries.getContributionText(req.query.cont_id)
+        .then((text) => {
+          res.send(text);
+        })
+        .catch((err) => {
+          res.send(500);
+        })
+    });
+
     router.post('/:id/contributions', (req, res) => {
-      console.log(req.body)
       storiesQueries.addUpvote(req.body.cont_id, req.body.user_id)
+        .then((stories) => {
+          res.json(stories);
+        })
+        .catch((err) => {
+          res.send(500);
+        })
+    });
+
+    //patch to story
+    router.patch('/:id/contributions', (req, res) => {
+      console.log('here is the content', req.body.content)
+      console.log('here is the id', req.body.storyId)
+      storiesQueries.selectContribution(req.body.storyId, req.body.content)
         .then((stories) => {
           res.json(stories);
         })

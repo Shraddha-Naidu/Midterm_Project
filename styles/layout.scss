@@ -59,3 +59,8 @@ html {
 .submit_buttons button {
   border: none;
 }
+
+.card.owner:hover {
+  background-color: green;
+  color: #fffef0;
+}
