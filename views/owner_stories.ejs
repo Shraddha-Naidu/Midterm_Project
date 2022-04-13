@@ -36,6 +36,18 @@
       </div>
     </form>
   </section>
+  <div class="all-stories-container">
+     <section class="single-story-container">
+      <% for(let story in stories) { %>
+        <header>
+         <div class="title"><a href="/:{<%stories[story].story_id%>}"><%= stories[story].title %></a></div>
+         <div class="creator">Created By: <%= stories[story].owner_id %></div>
+         <div class="completed">Completed: <%= stories[story].IsComplete %></div>
+        </header>
+        <div class="content"><%= stories[story].content %></div>
+       <% } %>
+      </section>
+  </div>
 </main>
 
   <!-- Bootstrap JavaScript Bundle with Popper -->
