@@ -32,9 +32,9 @@ const storiesQueries = require('../lib/helperFunctions')(db);
 
     //get a story by id
     router.get('/:id', (req, res) => {
-      console.log('userid is ', req.session.userid)
       storiesQueries.getStoryById(req.params.id)
         .then((values) => {
+          console.log('story', values)
           const templateVars = {
             story: values,
             user_id: req.session.userid

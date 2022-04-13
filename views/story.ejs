@@ -36,14 +36,15 @@
     </div>
   </div>
 
-
+<% if(story.iscomplete === false) { %>
   <form id="contribution_form">
     <textarea id="contribution_text" rows=1 placeholder="New Contribution" name="text"></textarea>
     <div class="submit_buttons">
-      <button type="submit">Add</button>
+      <button class='add_button' type="submit">Add</button>
       <output name="counter" class="counter" for="text_area">255</output>
     </div>
   </form>
+<% } %>
 
   <div id="contributions-container"></div>
 
