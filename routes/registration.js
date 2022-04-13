@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-const { validateUser } = require('./lib/validation')(db);
-const { createNewUser } = require('./lib/helperFunctions')(db);
+const db = require('../lib/db')
+
+const { validateUser } = require('../lib/validation')(db);
+const { createNewUser } = require('../lib/helperFunctions')(db);
 
 const registrationRoutes = (db) => {
   router.post("/registration", (req, res) => {
