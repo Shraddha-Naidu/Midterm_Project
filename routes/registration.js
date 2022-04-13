@@ -21,7 +21,7 @@ const registrationRoutes = (db) => {
         const newUser = createNewUser(data.name, data.email, data.password);
       }
       req.session.userid = newUser;
-      res.redirect("/myStories")
+      res.redirect("/owner_stories")
     })
     .catch((err) => {
       res.send(500)
