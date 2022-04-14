@@ -45,7 +45,13 @@
     <% for(let story in stories) { %>
       <header>
        <div class="title"><a href="/stories/<%= stories[story].id %>"><%= stories[story].title %></a></div>
-       <div class="completed">Completed: <%= stories[story].iscomplete %></div>
+       <div>
+        <% if(stories[story].iscomplete === false) {%>
+          <p class ='status'>STATUS: IN PROGRESS</p>
+        <% } else { %>
+          <p class ='status'>STATUS: COMPLETED</p>
+        <% } %>
+       </div>
       </header>
       <div class="content"><%= stories[story].content %></div>
      <% } %>

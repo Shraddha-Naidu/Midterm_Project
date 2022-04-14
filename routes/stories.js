@@ -18,12 +18,7 @@ const storiesQueries = require('../lib/helperFunctions')(db);
     })
 
     //my stories page
-<<<<<<< HEAD
-    router.get('/', (req, res) => {
-      // console.log(req.session.name)
-=======
     router.get('/owner', (req, res) => {
->>>>>>> 60456d9 (Fixed owner page view and route)
       storiesQueries.getMyStories(req.session.userid)
         .then((stories) => {
           const templateVars = {
