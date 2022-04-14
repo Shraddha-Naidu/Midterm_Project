@@ -7,27 +7,31 @@ const { validateUser } = require('../lib/validation')(db);
 const { createNewUser } = require('../lib/helperFunctions')(db);
 
 const registrationRoutes = (db) => {
-  router.post("/registration", (req, res) => {
-    const regEmail = req.body.email;
-    const regPassword = req.body.password
-    validateUser(req.body.email)
-    .then((data) => {
-      if (!regEmail || !regPassword) {
-        res.status(400).send('Please use valid email and/or password.');
-      } else if (data.password === regPassword) {
-        res.status(400).send('Existing user. Please try another email.');
-      } else {
-        console.log('New User:', req.body)
-        const newUser = createNewUser(data.name, data.email, data.password);
-      }
-      req.session.userid = newUser;
-      res.redirect("/owner_stories")
-    })
-    .catch((err) => {
-      res.send(500)
-
+  //Registratin Route
+  router.post("/register", (req, res) => {
+    const newUser = {
+      regEmail: req.body.email,
+      regPassword: req.body.password,
+      regName: req.body.name
+    }
+    checkEmail(req.body.email)
+      .then((data) => {
+        if (!data) {
+          res.status(400).html('Please use valid email and/or password.');
+        } else if (data.email === newUser.email) {
+          res.status(400).html('Existing user. Please try another email.');
+        } else {
+          console.log('New User:', newUser)
+          createNewUser(newUser);
+          res.html(`Welcome ${req.body.name}!`);
+        }
+        req.session.userid = newUser;
+        res.redirect("/home")
+      })
+      .catch((err) => {
+        res.send(500)
+      })
   })
-})
   return router;
 };
 

@@ -47,8 +47,8 @@ const registrationRoutes = require('./routes/registration');
 const db = require('./lib/db');
 const { existingUrl } = require("../tinyapp/helpers");
 const { localsName } = require("ejs");
-const { validateUser, existingUser } = require('./lib/validation')(db);
-const { getRandomStory } = require('./lib/helperFunctions')(db);
+const { validateUser, existingUser, checkEmail } = require('./lib/validation')(db);
+const { getRandomStory, createNewUser } = require('./lib/helperFunctions')(db);
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -94,6 +94,30 @@ app.post('/', (req, res) => {
       res.send('invalid us/pw')
     })
 })
+
+
+app.post("/register", (req, res) => {
+  const newUser = {
+    regEmail: req.body.email,
+    regPassword: req.body.password,
+    regName: req.body.name
+  }
+  checkEmail(req.body.email)
+    .then((data) => {
+      if (!data) {
+        res.status(400).send('Please use valid email and/or password.');
+      } else if (data.email === newUser.email) {
+        res.status(400).send('Existing user. Please try another email.');
+      } else {
+        console.log('New User:', newUser)
+        createNewUser(newUser);
+        // res.send(`Welcome ${req.body.name}!`);
+        req.session.userid = newUser;
+        console.log('req.sessin.userid', req.session.userid)
+        res.redirect("/")
+      }
+    })
+});
 
 app.post('/logout', (req, res) => {
   req.session.userid = null;
