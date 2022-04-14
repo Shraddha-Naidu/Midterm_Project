@@ -10,9 +10,9 @@ const morgan = require("morgan");
 const session = require("express-session");
 // sessions middleware
 app.use(session(
-  { 
-    secret: 'keyboard tester',  
-    cookie: { maxAge: 60000 }, 
+  {
+    secret: 'keyboard tester',
+    cookie: { maxAge: 60000 },
     maxAge: 30*24*60*60*1000,
     resave: false,
     saveUninitialized: true
@@ -62,7 +62,7 @@ app.get("/", (req, res) => {
   getRandomStory().then((data) => {
     const storyTitle = data[0].title;
     const storyContent = data[0].content;
-    const templateVars = { storyTitle, storyContent }
+    const templateVars = { storyTitle, storyContent, user: ''}
     res.render("home", templateVars);
   })
 });
@@ -71,9 +71,11 @@ app.get("/", (req, res) => {
 app.post('/', (req, res) => {
   validateUser(req.body.email)
     .then((value) => {
+      console.log('value', value)
       if(value.password === req.body.password) {
         req.session.userid = value.id
-        console.log('login successful', req.session.userid)
+        req.session.name = value.name
+        console.log('login successful', req.session.userid, req.session.name)
         res.redirect('/stories')
       } else {
         res.send(401)
@@ -83,6 +85,11 @@ app.post('/', (req, res) => {
       res.send('invalid us/pw')
     })
 })
+
+app.post('/logout', (req, res) => {
+  req.session.userid = null;
+  res.redirect('/');
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

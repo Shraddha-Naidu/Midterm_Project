@@ -3,14 +3,14 @@ const router = express.Router();
 
 const db = require('../lib/db')
 
-const { validateUser } = require('../lib/helperFunctions')(db);
+const { validateUseEmail } = require('../lib/helperFunctions')(db);
 const { createNewUser } = require('../lib/helperFunctions')(db);
 
 const registrationRoutes = (db) => {
   router.post("/", (req, res) => {
     const regEmail = req.body.email;
     const regPassword = req.body.password
-    validateUser(req.body.email)
+    validateUseEmail(req.body.email)
     .then((data) => {
       console.log('returning data from query', data)
       if(typeof data === 'undefined'){

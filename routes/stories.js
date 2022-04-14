@@ -19,11 +19,13 @@ const storiesQueries = require('../lib/helperFunctions')(db);
 
     //my stories page
     router.get('/', (req, res) => {
+      // console.log(req.session.name)
       storiesQueries.getMyStories(req.session.userid)
         .then((stories) => {
           const templateVars = {
             stories,
-            userid: req.session.userid
+            userid: req.session.userid,
+            user: req.session.name
           }
           console.log(templateVars)
           res.render('owner_stories', templateVars);
@@ -50,7 +52,7 @@ const storiesQueries = require('../lib/helperFunctions')(db);
     router.get('/all', (req, res) => {
       storiesQueries.getAllStories()
         .then((stories) => {
-          const templateVars = {stories}
+          const templateVars = {stories, user: req.session.name}
           console.log(templateVars)
           res.render('stories', templateVars);
         })
@@ -66,7 +68,8 @@ const storiesQueries = require('../lib/helperFunctions')(db);
         .then((values) => {
           const templateVars = {
             story: values,
-            user_id: req.session.userid
+            user_id: req.session.userid,
+            user: req.session.name
           }
           if(req.session.userid === values.owner_id) {
             res.render('owner_story', templateVars)
