@@ -42,7 +42,7 @@ nav {
 }
 
 
-section {
+#about {
   width: 60%;
   display: flex;
   flex-direction: column;
@@ -99,3 +99,9 @@ section {
   font-size:2em;
 }
 
+
+//MODAL BUTTON STYLING
+#create_story_button {
+ position: fixed;
+ top: 150px
+}
