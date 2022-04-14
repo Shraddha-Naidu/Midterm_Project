@@ -49,10 +49,10 @@ $(document).ready(function() {
     let val = $('#contribution_text').val();
     let value = escape(val)
     console.log('value', value)
-    // let contributionContent = $(this).serialize();
     $.post(`/stories/${storyId}`, { user_id: user_id, story_id: `${storyId}`, content: value}, function(data) {
-      $('#contributions-container').empty();
-      retrieveContributions()
+      data.count = 0
+      console.log(data)
+      $('#contributions-container').append(renderContribution(data))
     })
   })
 
