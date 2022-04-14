@@ -17,8 +17,37 @@ const storiesQueries = require('../lib/helperFunctions')(db);
 
     })
 
-    //get all stories
+    //my stories page
     router.get('/', (req, res) => {
+      storiesQueries.getMyStories(req.session.userid)
+        .then((stories) => {
+          const templateVars = {
+            stories,
+            userid: req.session.userid
+          }
+          console.log(templateVars)
+          res.render('owner_stories', templateVars);
+        })
+        .catch((err) => {
+          res.render()
+            .send(500);
+        })
+    });
+
+    //reload my stories
+    router.get('/owner', (req, res) => {
+      storiesQueries.getMyStories(req.session.userid)
+        .then((stories) => {
+         res.json(stories)
+        })
+        .catch((err) => {
+          res.render()
+            .send(500);
+        })
+    });
+
+    //get all stories
+    router.get('/all', (req, res) => {
       storiesQueries.getAllStories()
         .then((stories) => {
           const templateVars = {stories}
@@ -46,7 +75,7 @@ const storiesQueries = require('../lib/helperFunctions')(db);
           }
         })
         .catch((err) => {
-          res.send(500);
+          res.sendStatus(500);
         })
     });
 
@@ -107,7 +136,7 @@ const storiesQueries = require('../lib/helperFunctions')(db);
 
     //route to create a new story
     router.post('/', (req, res) => {
-      storiesQueries.createNewStory(req.body.id, req.body.title, req.body.content)
+      storiesQueries.createNewStory(req.session.userid, req.body["new-story-title"], req.body['new-story-text'])
       .then((story) => {
         res.send(story)
       })

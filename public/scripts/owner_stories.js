@@ -3,16 +3,12 @@
 const createStoryElement = function(storyData) {
 
   let $newStory = $(`
-  <article class="newStory">
     <header>
-      <span class="title">${storyData.Title}</span>
-    </header>
-    <span class="story-content">${storyData.content}</span>
-    <footer>
-    <span class="completed">${storyData.IsComplete}</span>
-      <span>
-    </footer>
-  </article>
+    <div class="title"><a href="/stories/${storyData.id}">${storyData.title}</a></div>
+    <div class="creator">Created By: ${storyData.owner_id}</div>
+    <div class="completed">Completed: ${storyData.iscomplete}</div>
+      </header>
+      <div class="content">${storyData.content}</div>
   `);
 
   return $newStory;
@@ -27,12 +23,13 @@ const renderStories = function(allOwnerStories) {
 
 const loadStories = function () {
   $.ajax({
-    url: "/stories/${ownerId}",
-    type: "GET"
-  }).then(function(data){
-      console.log(data);
+    url: '/stories/owner',
+    type: "GET",
+    success: (data) => {
+      console.log(data)
       renderStories(data);
-    });
+    }
+  })
 };
 /*JQuery*/
 //DOM ready
@@ -40,25 +37,31 @@ const loadStories = function () {
 $(document).ready(function () {
 
 //Loads tweets from db
-loadStories();
+// loadStories();
 
 // New submitted tweet
-$(".all-stories-container").submit(function (event) {
-  event.preventDefault();//prevents default submission behaviour
-
-  if(!$(".story-text-input").val() || !$(".title-input").val()) {
-    $(".error-message").html("Invalid! Please try again!").fadeIn(200).fadeOut(3500);
-  } else {
-    const story = $('.new-story-form').serialize();
-    $.ajax({
-      url:"/owner_stories",
-      type: "POST",
-      data: story
-    }).then(() => {
-        loadStories();
-        story.val("");
+  $(".new-story-form").submit(function (event) {
+    event.preventDefault();//prevents default submission behaviour
+    if(!($(".story-text-input").val()) || !($(".title-input").val())) {
+      $(".error-message").html("Invalid! Please try again!").fadeIn(200).fadeOut(3500);
+    } else {
+      const story = $(this).serialize();
+      console.log('story', story)
+      $.ajax({
+        type: "POST",
+        url: "/stories",
+        data: story,
+        success: (data) => {
+          console.log(data)
+          $('.single-story-container').empty()
+          loadStories()
+        }
       })
+    }
+      // .then(() => {
+      //     loadStories();
+      //     story.val("");
+      //   })
+  })
 
-  };
-})
 });
