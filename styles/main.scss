@@ -67,7 +67,7 @@ nav {
 .btn-info, .btn-info:focus, .btn-info:hover {
   margin-left:3vw;
   color: white;
-  background-color: #084c9e;
+  background-color: #1e4109;
 }
 
 // div>.nav-link{
@@ -96,12 +96,17 @@ nav {
   justify-items: center;
 }
 .random-story-title  {
-  font-size:2em;
+  font-size:1.25em;
 }
 
 
 //MODAL BUTTON STYLING
 #create_story_button {
  position: fixed;
- top: 150px
+ top: 150px;
+ border: none;
+ color: black;
+ text-decoration: underline;
+ background-color: transparent;
+ font-size: medium;
 }
