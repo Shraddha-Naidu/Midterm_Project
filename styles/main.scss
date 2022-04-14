@@ -37,6 +37,11 @@ main {
 
 }
 
+nav {
+  padding-left: 1em;
+}
+
+
 section {
   width: 60%;
   display: flex;
@@ -52,6 +57,7 @@ section {
   color:white;
   padding-top: 3vh;
   margin-left: 2em;
+  display: none;
 }
 
 .form {
@@ -93,11 +99,3 @@ section {
   font-size:2em;
 }
 
-// nav {
-//   display: flex;
-//   // flex-direction: column;
-//   align-items: center;
-//   justify-content: space-around;
-//   font-family: 'Popins', sans-serif;
-//   color: white;
-// }
