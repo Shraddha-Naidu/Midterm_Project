@@ -9,7 +9,7 @@ const app = express();
 const morgan = require("morgan");
 const session = require("express-session");
 // sessions middleware
-app.use(session({ secret: 'keyboard tester',  cookie: { maxAge: 60000 }, maxAge: 30*24*60*60*1000 })) // Rememeber 'me' for 30 days
+app.use(session({ secret: 'keyboard tester', cookie: { maxAge: 60000 }, maxAge: 30 * 24 * 60 * 60 * 1000 })) // Rememeber 'me' for 30 days
 
 // PG database client/connection setup -- moved to db.js
 
@@ -36,8 +36,10 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const storiesRoutes = require('./routes/stories');
 const registrationRoutes = require('./routes/registration');
-const db = require('./lib/db')
-const { validateUser } = require('./lib/validation')(db);
+const db = require('./lib/db');
+const { existingUrl } = require("../tinyapp/helpers");
+const { localsName } = require("ejs");
+const { validateUser, existingUser } = require('./lib/validation')(db);
 const { getRandomStory } = require('./lib/helperFunctions')(db);
 
 // Mount all resource routes
@@ -51,23 +53,31 @@ app.use('/registration', registrationRoutes(db))
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  getRandomStory().then((data) => {
-    const storyTitle = data[0].title;
-    const storyContent = data[0].content;
-    const templateVars = { storyTitle, storyContent }
-    res.render("home", templateVars);
+  existingUser().then((user) => {
+    const id = user.id;
+    const name = user.name;
+    const templateVars = { id, name };
+    if (id === req.session.userid) {
+      res.redirect('stories/1')
+    } else {
+      getRandomStory().then((data) => {
+        const storyTitle = data[0].title;
+        const storyContent = data[0].content;
+        const templateVars = { storyTitle, storyContent }
+        res.render("home", templateVars);
+      })
+    }
   })
 });
 
 //login route
 app.post('/', (req, res) => {
-  console.log(req.body)
   validateUser(req.body.email)
     .then((value) => {
-      if(value.password === req.body.password) {
+      if (value.password === req.body.password) {
         req.session.userid = value.id
         console.log('login successful', req.session.userid)
-        res.redirect('/stories')
+        res.redirect('/')
       } else {
         res.send(401)
       }
@@ -76,6 +86,11 @@ app.post('/', (req, res) => {
       res.send('invalid us/pw')
     })
 })
+
+app.post('/logout', (req, res) => {
+  req.session.userid = null;
+  res.redirect('/');
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

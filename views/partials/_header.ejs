@@ -10,14 +10,25 @@
         <a class="nav-item nav-link" href="/">MY STORIES</a>
         <a class="nav-item nav-link" href="/stories">ALL STORIES</a>
         <a class="nav-item nav-link" href="/">CONTRIBUTIONS</a>
+        <div class="navbar-nav" style="display: flex; align-items: center;">
+          <% if (locals.user_id) { %>
+            <!-- <% console.log("locals", locals) %> -->
+            <h6>Logged In As: <%= locals.user_id%> !
+            </h6>
+            <form method="POST" action="/logout" style="margin-left:1em;">
+              <button type="submit" class="btn btn-outline-secondary"> Logout </button>
+            </form>
+            <% } else { %>
+              <p>Please Login</p>
+              <!-- <% console.log("locals", locals) %> -->
+              <%}%>
+        </div>
       </div>
-    </div>
-
-    <!-- <div>
+      <!-- <div>
         <a class="nav-item nav-link" href="/">LOGIN</a>
         <a class="nav-item nav-link" href="/">CREATE ACCOUNT</a>
-      </div> -->
-        <a class="nav-item nav-link" href="/registration">CREATE ACCOUNT</a>
-      </div>
+        </div> -->
+      <!-- <a class="nav-item nav-link" href="/registration">CREATE ACCOUNT</a> -->
+    </div>
   </nav>
 </header>
