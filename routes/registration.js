@@ -17,6 +17,7 @@ const registrationRoutes = (db) => {
         createNewUser(req.body.name, req.body.email, req.body.password)
         .then((user) =>{
           req.session.userid = user.id
+          req.session.name = value.name
           res.redirect('/stories')
         })
         .catch(err => {
