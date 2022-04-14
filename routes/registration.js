@@ -3,31 +3,35 @@ const router = express.Router();
 
 const db = require('../lib/db')
 
-const { validateUser } = require('../lib/validation')(db);
+const { validateUser } = require('../lib/helperFunctions')(db);
 const { createNewUser } = require('../lib/helperFunctions')(db);
 
 const registrationRoutes = (db) => {
-  router.post("/registration", (req, res) => {
+  router.post("/", (req, res) => {
     const regEmail = req.body.email;
     const regPassword = req.body.password
     validateUser(req.body.email)
     .then((data) => {
-      if (!regEmail || !regPassword) {
-        res.status(400).send('Please use valid email and/or password.');
-      } else if (data.password === regPassword) {
-        res.status(400).send('Existing user. Please try another email.');
-      } else {
-        console.log('New User:', req.body)
-        const newUser = createNewUser(data.name, data.email, data.password);
+      console.log('returning data from query', data)
+      if(typeof data === 'undefined'){
+        createNewUser(req.body.name, req.body.email, req.body.password)
+        .then((user) =>{
+          req.session.userid = user.id
+          res.redirect('/stories')
+        })
+        .catch(err => {
+          console.log(err)
+        })
       }
-      req.session.userid = newUser;
-      res.redirect("/owner_stories")
+      else{
+        console.log('user exists')
+      }
+
     })
     .catch((err) => {
-      res.send(500)
-
+      console.log(err.message)
+    })
   })
-})
   return router;
 };
 
