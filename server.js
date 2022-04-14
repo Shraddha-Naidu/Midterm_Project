@@ -59,7 +59,7 @@ app.use('/registration', registrationRoutes(db))
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  getRandomStory().then((data) => {
+   getRandomStory().then((data) => {
     const storyTitle = data[0].title;
     const storyContent = data[0].content;
     const templateVars = { storyTitle, storyContent, user: ''}
@@ -74,11 +74,10 @@ app.post('/', (req, res) => {
       console.log('value', value)
       if(value.password === req.body.password) {
         req.session.userid = value.id
-        req.session.name = value.name
-        console.log('login successful', req.session.userid, req.session.name)
-        res.redirect('/stories')
+        console.log('login successful', req.session.userid)
+        res.redirect('/')
       } else {
-        res.send(401)
+        res.status(401)
       }
     })
     .catch((err) => {

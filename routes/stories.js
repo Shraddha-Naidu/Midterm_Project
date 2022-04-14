@@ -18,8 +18,12 @@ const storiesQueries = require('../lib/helperFunctions')(db);
     })
 
     //my stories page
+<<<<<<< HEAD
     router.get('/', (req, res) => {
       // console.log(req.session.name)
+=======
+    router.get('/owner', (req, res) => {
+>>>>>>> 60456d9 (Fixed owner page view and route)
       storiesQueries.getMyStories(req.session.userid)
         .then((stories) => {
           const templateVars = {
@@ -30,13 +34,11 @@ const storiesQueries = require('../lib/helperFunctions')(db);
           console.log(templateVars)
           res.render('owner_stories', templateVars);
         })
-        .catch((err) => {
-          res.render()
-            .send(500);
-        })
+        //res.render("owner_stories");
+        //res.send("<h3>hello from owner</h3>")
     });
 
-    //reload my stories
+    /* //reload my stories
     router.get('/owner', (req, res) => {
       storiesQueries.getMyStories(req.session.userid)
         .then((stories) => {
@@ -46,7 +48,7 @@ const storiesQueries = require('../lib/helperFunctions')(db);
           res.render()
             .send(500);
         })
-    });
+    }); */
 
     //get all stories
     router.get('/all', (req, res) => {
