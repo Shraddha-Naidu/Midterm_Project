@@ -47,13 +47,21 @@ $(document).ready(function() {
   $('#contribution_form').on('submit', function(e) {
     e.preventDefault();
     let val = $('#contribution_text').val();
-    let contributionContent = $(this).serialize();
-    $.post(`/stories/${storyId}`, { user_id: user_id, story_id: `${storyId}`, content: val}, function(data) {
+    let value = escape(val)
+    console.log('value', value)
+    // let contributionContent = $(this).serialize();
+    $.post(`/stories/${storyId}`, { user_id: user_id, story_id: `${storyId}`, content: value}, function(data) {
       $('#contributions-container').empty();
       retrieveContributions()
     })
   })
 
+  //function to escape text content
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
 
 });
 

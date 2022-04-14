@@ -17,11 +17,41 @@ const storiesRoutes = (db) => {
 
   })
 
-  //get all stories
+  //my stories page
   router.get('/', (req, res) => {
+    storiesQueries.getMyStories(req.session.userid)
+      .then((stories) => {
+        const templateVars = {
+          stories,
+          userid: req.session.userid
+        }
+        console.log(templateVars)
+        res.render('owner_stories', templateVars);
+      })
+      .catch((err) => {
+        res.render()
+          .send(500);
+      })
+  });
+
+  //reload my stories
+  router.get('/owner', (req, res) => {
+    storiesQueries.getMyStories(req.session.userid)
+      .then((stories) => {
+        res.json(stories)
+      })
+      .catch((err) => {
+        res.render()
+          .send(500);
+      })
+  });
+
+  //get all stories
+  router.get('/all', (req, res) => {
     storiesQueries.getAllStories()
       .then((stories) => {
         const templateVars = { stories }
+        console.log(templateVars)
         res.render('stories', templateVars);
       })
       .catch((err) => {
@@ -34,7 +64,6 @@ const storiesRoutes = (db) => {
   router.get('/:id', (req, res) => {
     storiesQueries.getStoryById(req.params.id)
       .then((values) => {
-        console.log('story', values)
         const templateVars = {
           story: values,
           user_id: req.session.userid
@@ -46,7 +75,7 @@ const storiesRoutes = (db) => {
         }
       })
       .catch((err) => {
-        res.send(500);
+        res.sendStatus(500);
       })
   });
 
@@ -96,8 +125,6 @@ const storiesRoutes = (db) => {
 
   //patch to add contribution to story
   router.patch('/:id/contributions', (req, res) => {
-    console.log('here is the content', req.body.content)
-    console.log('here is the id', req.body.storyId)
     storiesQueries.selectContribution(req.body.storyId, req.body.content)
       .then((stories) => {
         res.json(stories);
@@ -109,7 +136,7 @@ const storiesRoutes = (db) => {
 
   //route to create a new story
   router.post('/', (req, res) => {
-    storiesQueries.createNewStory(req.body.id, req.body.title, req.body.content)
+    storiesQueries.createNewStory(req.session.userid, req.body["new-story-title"], req.body['new-story-text'])
       .then((story) => {
         res.send(story)
       })
@@ -144,5 +171,7 @@ const storiesRoutes = (db) => {
 
   return router;
 }
+
+
 
 module.exports = storiesRoutes;

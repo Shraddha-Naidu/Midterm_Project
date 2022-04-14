@@ -1,34 +1,43 @@
 <header>
   <nav class="navbar navbar-expand" style="background-color: #307890;">
-    <a class="navbar-brand" href="/">SITE NAME</a>
+    <a class="navbar-brand" href="/">GOOSEBUMPS</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
       aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" href="/">MY STORIES</a>
-        <a class="nav-item nav-link" href="/stories">ALL STORIES</a>
-        <a class="nav-item nav-link" href="/">CONTRIBUTIONS</a>
-        <div class="navbar-nav" style="display: flex; align-items: center;">
-          <% if (locals.user_id) { %>
-            <!-- <% console.log("locals", locals) %> -->
-            <h6>Logged In As: <%= locals.user_id%> !
-            </h6>
-            <form method="POST" action="/logout" style="margin-left:1em;">
-              <button type="submit" class="btn btn-outline-secondary"> Logout </button>
-            </form>
-            <% } else { %>
-              <p>Please Login</p>
-              <!-- <% console.log("locals", locals) %> -->
-              <%}%>
+    <div>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="/stories">MY STORIES</a>
+          <a class="nav-item nav-link" href="/stories/all">ALL STORIES</a>
         </div>
-      </div>
-      <!-- <div>
+
+        <!-- <div>
         <a class="nav-item nav-link" href="/">LOGIN</a>
         <a class="nav-item nav-link" href="/">CREATE ACCOUNT</a>
         </div> -->
-      <!-- <a class="nav-item nav-link" href="/registration">CREATE ACCOUNT</a> -->
+        <!-- <a class="nav-item nav-link" href="/registration">CREATE ACCOUNT</a> -->
+      </div>
+      <div class="navbar-nav" style="display: flex; align-items: center;">
+        <% if (locals.user_id) { %>
+          <!-- <% console.log("locals", locals) %> -->
+          <h6>Logged In As: <%= locals.user_id%> !
+          </h6>
+          <form method="POST" action="/logout" style="margin-left:1em;">
+            <button type="submit" class="btn btn-outline-secondary"> Logout </button>
+          </form>
+          <% }%>
+
+      </div>
     </div>
+    </div>
+    </div>
+
+    <!-- <div>
+        <a class="nav-item nav-link" href="/">LOGIN</a>
+        <a class="nav-item nav-link" href="/">CREATE ACCOUNT</a>
+      </div> -->
+    <!--  <a class="nav-item nav-link" href="/registration">CREATE ACCOUNT</a>
+      </div> -->
   </nav>
 </header>
