@@ -52,7 +52,8 @@ $(document).ready(function () {
         url: "/stories",
         data: story,
         success: (data) => {
-          console.log(data)
+          console.log(data);
+          closeModal;
           $('.single-story-container').empty()
           loadStories()
         }
@@ -63,5 +64,9 @@ $(document).ready(function () {
       //     story.val("");
       //   })
   })
+
+  const closeModal = $('#btnSave').click(function() {
+    $('#exampleModalCenter').modal('hide');
+ });
 
 });
