@@ -1,27 +1,25 @@
 <header>
-  <nav class="navbar navbar-expand" style="background-color:#084c9e;">
-    <div class='navbar-nav left'></div>
-      <a class="navbar-brand" href="/">GOOSEBUMPS</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav left">
-          <a class="nav-item nav-link" href="/stories">MY STORIES</a>
-          <a class="nav-item nav-link" href="/stories/all">ALL STORIES</a>
-        </div>
-    </div>
-    <div class="navbar-nav right">
-      <% if(user) { %>
-        <form method="POST" action="/logout" style="margin-left:1em;">
-        <%= user %>
-      <button type="submit" class="btn btn-primary">Log Out</button>
-      </form>
-      <% } else {%>
-        <% } %>
-    </form>
-    </div>
+  <nav class="navbar navbar-expand-md navbar-dark bg-success">
+    <a class="navbar-brand" href="/stories">GOOSEBUMPS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" style="justify-content: space-between" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="/stories">MY STORIES</a>
+        <a class="nav-item nav-link" href="/stories/all">ALL STORIES</a>
+      </div>
 
+      <div class="login_nav navbar-brand">
+        <% if(user) { %>
+          <form method="POST" action="/logout" style="margin-left:1em;">
+            <%= user %>
+       <button type="submit" class="btn btn-primary">Log Out</button>
+       </form>
+       <% } else {%>
+        <% } %>
+    </div>
+      </div>
+    </div>
   </nav>
 </header>

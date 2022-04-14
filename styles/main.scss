@@ -45,13 +45,13 @@ section {
   padding:10vh;
 }
 
-form {
+#login-form-id, #register-form-id{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   color:white;
   padding-top: 3vh;
-  margin-left:3vw;
+  margin-left: 2em;
 }
 
 .form {
@@ -63,6 +63,11 @@ form {
   color: white;
   background-color: #084c9e;
 }
+
+// div>.nav-link{
+//   color:white !important;
+// }
+
 .register-form {
   display:none;
 }
@@ -88,14 +93,11 @@ form {
   font-size:2em;
 }
 
-nav {
-  display: flex;
-  // flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  font-family: 'Popins', sans-serif;
-
-}
-a, .nav-link {
-  color: wheat;
-}
+// nav {
+//   display: flex;
+//   // flex-direction: column;
+//   align-items: center;
+//   justify-content: space-around;
+//   font-family: 'Popins', sans-serif;
+//   color: white;
+// }
