@@ -15,7 +15,7 @@ html {
 .jumbotron {
   display: flex;
   justify-content: center;
-  margin-bottom: 3em;
+  margin-bottom: 1.5em;
 }
 
 .story_container{
@@ -122,4 +122,8 @@ html {
 
 .text-header {
   text-align: center;
+}
+
+.card .flex-row .m-3 .mt-5 .p-3 .w-75 .mx-auto {
+  background-color: #71875f;
 }

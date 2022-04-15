@@ -8,8 +8,7 @@ const { createNewUser } = require('../lib/helperFunctions')(db);
 
 const registrationRoutes = (db) => {
   router.post("/", (req, res) => {
-    const regEmail = req.body.email;
-    const regPassword = req.body.password
+
     validateUseEmail(req.body.email)
     .then((data) => {
       console.log('returning data from query', data)
@@ -17,7 +16,7 @@ const registrationRoutes = (db) => {
         createNewUser(req.body.name, req.body.email, req.body.password)
         .then((user) =>{
           req.session.userid = user.id
-          req.session.name = value.name
+          req.session.name = user.name
           res.redirect('/stories')
         })
         .catch(err => {
