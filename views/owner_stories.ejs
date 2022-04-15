@@ -50,8 +50,8 @@
         </section>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="">Close</button>
-        <button type="submit" class="btn btn-primary" form="create_form" data-bs-dismiss="modal">Create</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border: none; color: black; background-color: transparent;text-decoration: underline;">Close</button>
+        <button type="submit" class="btn btn-primary" form="create_form" data-bs-dismiss="modal" style="background-color: black;">Create</button>
       </div>
     </div>
   </div>
@@ -63,7 +63,11 @@
       <% for (let story in stories) { %>
         <header>
          <div class="title"><a href="/stories/<%= stories[story].id %>"><%= stories[story].title %></a></div>
+<<<<<<< HEAD
          <div class="creator">CREATED BY: <%= user %></div>
+=======
+         <div class="creator">Created By: <%= story.name %></div>
+>>>>>>> 09ee718 (Styla change landing page)
          <div>
           <% if(stories[story].iscomplete === false) {%>
             <p class ='status' id="status_false">Status: In Progress</p>
