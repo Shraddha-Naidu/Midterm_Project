@@ -12,8 +12,7 @@ const session = require("express-session");
 app.use(session(
   {
     secret: 'keyboard tester',
-    cookie: { maxAge: 60000 },
-    maxAge: 30*24*60*60*1000,
+    cookie: { maxAge: 604800000 },
     resave: false,
     saveUninitialized: true
   }
