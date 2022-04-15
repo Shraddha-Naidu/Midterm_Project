@@ -1,7 +1,7 @@
 GOSEBUMP STORY CREATOR
 ==============
 
-##About
+## About
 
 Goosebump Creator is an interactive web app that allows users to read, create, and contribute to other user created stories.
 
@@ -9,17 +9,31 @@ Want to write a story, but are stuck after a few lines? Goosbump Creator is for 
 
 Start writing today!
 
-##Screenshots
+## Screenshots
 
 Login Page
 
-[!"Screenshot of Login Page"]()
+[!"Screenshot of Login Page"](https://github.com/Shraddha-Naidu/Midterm_Project/blob/master/docs/Login%20Page.png)
+
 User Stories Page
-[!"Screenshot of Login Page"]()
+
+[!"Screenshot of User Stories Page"](https://github.com/Shraddha-Naidu/Midterm_Project/blob/master/docs/UserStoriesPage.png)
+
+Create New Story
+
+[!"Screenshot of User Create Story"](https://github.com/Shraddha-Naidu/Midterm_Project/blob/master/docs/UserStoriesPage.png)
+
+
 All Stories
-[!"Screenshot of Login Page"]()
+
+[!"Screenshot of All Stories"]()
+
 Contributions
-[!"Screenshot of Login Page"]()
+
+[!"Screenshot of User contribution submisison Page"](https://github.com/Shraddha-Naidu/Midterm_Project/blob/master/docs/UserStoryPagew:ContributionSubmissions.png)
+
+[!"Screenshot of User contribution submisison Page"](https://github.com/Shraddha-Naidu/Midterm_Project/blob/master/docs/SumittedContributionsForStory.png)
+
 
 
 
