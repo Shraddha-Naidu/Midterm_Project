@@ -42,22 +42,15 @@ app.use(express.static("public"));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const storiesRoutes = require('./routes/stories');
-<<<<<<< HEAD
-const db = require('./lib/db')
-=======
 const registrationRoutes = require('./routes/registration');
 const db = require('./lib/db')
 const { validateUser } = require('./lib/validation')(db);
 const { getRandomStory } = require('./lib/helperFunctions')(db);
->>>>>>> final
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use('/stories', storiesRoutes(db))
-<<<<<<< HEAD
-=======
 app.use('/registration', registrationRoutes(db))
->>>>>>> final
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -65,9 +58,6 @@ app.use('/registration', registrationRoutes(db))
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-<<<<<<< HEAD
-  res.render("home");
-=======
   getRandomStory().then((data) => {
     const storyTitle = data[0].title;
     const storyContent = data[0].content;
@@ -98,7 +88,6 @@ app.post('/', (req, res) => {
 app.post('/logout', (req, res) => {
   req.session.userid = null;
   res.redirect('/');
->>>>>>> final
 });
 
 app.listen(PORT, () => {
