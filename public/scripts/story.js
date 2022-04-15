@@ -46,14 +46,19 @@ $(document).ready(function() {
   //on click, add new contribution
   $('#contribution_form').on('submit', function(e) {
     e.preventDefault();
-    let val = $('#contribution_text').val();
+    const currentTextLength = $('#contribution_text').val()
+    if(currentTextLength > 255){
+      let val = $('#contribution_text').val();
     let value = escape(val)
     console.log('value', value)
     $.post(`/stories/${storyId}`, { user_id: user_id, story_id: `${storyId}`, content: value}, function(data) {
       data.count = 0
-      console.log(data)
       $('#contributions-container').append(renderContribution(data))
     })
+    } else {
+      alert("Stick to the limit")
+    }
+
   })
 
   //function to escape text content

@@ -1,18 +1,12 @@
-/* $(document).ready(function() {
-  const maxLength = 150;
-  $('char-count').text(maxLength)
-
-  $("textarea.story-text-input").on("input", function(){
-    const count = $('#char-count')
-    const input = $(this).val().length;
-    count.text(maxLength - input)
-
-    if (input > maxLength) {
-      count.addClass('red')
-    } else {
-      count.removeClass('red')
+$(document).ready(function() {
+  $("#contribution_text").on("input", function(){
+    let charCount = 255 - $(this).val().length;
+    let count = $(this).parent().find(".counter");
+    if(charCount < 0) {
+      count.text(charCount).css("color", "red");
+    }else {
+      count.text(charCount).css("color", '');
     }
-
   });
 });
- */
+
