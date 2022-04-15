@@ -64,10 +64,17 @@ nav {
   flex-direction: row;
 
 }
-.btn-info, .btn-info:focus, .btn-info:hover {
-  margin-left:3vw;
+.btn-info, .btn-info:focus {
+  margin-left: 4vw;
+  margin-bottom: 2vw;
   color: white;
   background-color: #1e4109;
+  top:auto;
+  border: none
+}
+
+.btn-info:hover {
+  background: #ab9548;
 }
 
 // div>.nav-link{
@@ -103,7 +110,7 @@ nav {
 //MODAL BUTTON STYLING
 #create_story_button {
  position: fixed;
- top: 150px;
+ top: 125px;
  border: none;
  color: black;
  text-decoration: underline;
