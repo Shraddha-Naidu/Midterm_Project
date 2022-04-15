@@ -53,7 +53,7 @@ $(document).ready(function () {
           console.log(data);
           closeModal;
           $('.single-story-container').empty()
-          loadStories()
+          location.reload();
         }
       })
     }

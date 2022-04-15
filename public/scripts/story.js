@@ -54,6 +54,7 @@ $(document).ready(function() {
       $.post(`/stories/${storyId}`, { user_id: user_id, story_id: `${storyId}`, content: value}, function(data) {
         data.count = 0
         $('#contributions-container').append(renderContribution(data))
+        $('#contribution_text').val("")
     })
     } else {
       alert("Stick to the limit")

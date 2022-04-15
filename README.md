@@ -1,3 +1,26 @@
+GOSEBUMP STORY CREATOR
+==============
+
+##About
+Goosebump Creator is an interactive web app that allows users to read, create, and contribute to other user created stories.
+
+Want to write a story, but are stuck after a few lines? Goosbump Creator is for you.  It allows a user to create a story and then is added to by other users on the app. As the creator you get to decide which contributions you want added and when the story ends. Users will still be able to read your completed story, but will no longer be able to add to it.
+
+Start writing today!
+
+##Screenshots
+
+Login Page
+
+User Stories Page
+
+All Stories
+
+Contributions
+
+
+
+
 LHL Node Skeleton
 =========
 
