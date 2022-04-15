@@ -47,13 +47,13 @@ $(document).ready(function() {
   $('#contribution_form').on('submit', function(e) {
     e.preventDefault();
     const currentTextLength = $('#contribution_text').val()
-    if(currentTextLength > 255){
+    if(currentTextLength.length < 255){
       let val = $('#contribution_text').val();
-    let value = escape(val)
-    console.log('value', value)
-    $.post(`/stories/${storyId}`, { user_id: user_id, story_id: `${storyId}`, content: value}, function(data) {
-      data.count = 0
-      $('#contributions-container').append(renderContribution(data))
+      let value = escape(val)
+      console.log('value', value)
+      $.post(`/stories/${storyId}`, { user_id: user_id, story_id: `${storyId}`, content: value}, function(data) {
+        data.count = 0
+        $('#contributions-container').append(renderContribution(data))
     })
     } else {
       alert("Stick to the limit")
