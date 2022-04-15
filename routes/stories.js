@@ -59,13 +59,6 @@ const storiesQueries = require('../lib/helperFunctions')(db);
             .send(500);
         })
     });
-<<<<<<< HEAD
-    //get a story by id
-    router.get('/:id', (req, res) => {
-      storiesQueries.getStoryById(req.params.id)
-        .then((story) => {
-          res.json(story);
-=======
 
     //get a story by id
     router.get('/:id', (req, res) => {
@@ -92,23 +85,11 @@ const storiesQueries = require('../lib/helperFunctions')(db);
       storiesQueries.getAllContributions(req.params.id)
         .then((stories) => {
           res.json(stories);
->>>>>>> final
         })
         .catch((err) => {
           res.send(500);
         })
     });
-<<<<<<< HEAD
-    //route to create a new story
-    router.post('/', (req, res) => {
-      storiesQueries.createNewStory(req.body.id, req.body.content)
-      .then((story) => {
-        res.send(story)
-      })
-    });
-    return router;
-  }
-=======
 
     //get a contributions text by story id
     router.get('/:id/contributions/text', (req, res) => {
@@ -193,6 +174,5 @@ const storiesQueries = require('../lib/helperFunctions')(db);
 }
 
 
->>>>>>> final
 
 module.exports = storiesRoutes;
