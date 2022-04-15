@@ -8,8 +8,7 @@ const { createNewUser } = require('../lib/helperFunctions')(db);
 
 const registrationRoutes = (db) => {
   router.post("/", (req, res) => {
-    const regEmail = req.body.email;
-    const regPassword = req.body.password
+
     validateUseEmail(req.body.email)
     .then((data) => {
       console.log('returning data from query', data)

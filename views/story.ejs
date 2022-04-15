@@ -39,6 +39,13 @@
       <p class="author">Curated By <%= story.name %></p>
     </div>
   </div>
+  <div>
+    <% if(story.iscomplete === false) {%>
+      <p class ='status' id="status_false" style="margin-left: 160px; margin-bottom: 45px">Status: In Progress</p>
+    <% } else { %>
+      <p class ='status' id="status_true">Status: Complete</p>
+    <% } %>
+  </div>
 
 <% if(story.iscomplete === false) { %>
   <form id="contribution_form">
