@@ -13,26 +13,26 @@ Start writing today!
 
 Login Page
 
-[!"Screenshot of Login Page"](https://github.com/Shraddha-Naidu/Midterm_Project/blob/master/docs/Login%20Page.png)
+!["Screenshot of Login Page"](https://github.com/Shraddha-Naidu/Midterm_Project/blob/master/docs/Login%20Page.png)
 
 User Stories Page
 
-[!"Screenshot of User Stories Page"](https://github.com/Shraddha-Naidu/Midterm_Project/blob/master/docs/UserStoriesPage.png)
+!["Screenshot of User Stories Page"](https://github.com/Shraddha-Naidu/Midterm_Project/blob/master/docs/UserStoriesPage.png)
 
 Create New Story
 
-[!"Screenshot of User Create Story"](https://github.com/Shraddha-Naidu/Midterm_Project/blob/master/docs/UserStoriesPage.png)
+!["Screenshot of User Create Story"](https://github.com/Shraddha-Naidu/Midterm_Project/blob/master/docs/CreateStory.png)
 
 
 All Stories
 
-[!"Screenshot of All Stories"]()
+!["Screenshot of All Stories"](https://github.com/Shraddha-Naidu/Midterm_Project/blob/master/docs/AllStories.png)
 
 Contributions
 
-[!"Screenshot of User contribution submisison Page"](https://github.com/Shraddha-Naidu/Midterm_Project/blob/master/docs/UserStoryPagew:ContributionSubmissions.png)
+!["Screenshot of User contribution submisison Page"](https://github.com/Shraddha-Naidu/Midterm_Project/blob/master/docs/UserStoryPagew:ContributionSubmissions.png)
 
-[!"Screenshot of User contribution submisison Page"](https://github.com/Shraddha-Naidu/Midterm_Project/blob/master/docs/SumittedContributionsForStory.png)
+!["Screenshot of User contribution submisison Page"](https://github.com/Shraddha-Naidu/Midterm_Project/blob/master/docs/SumittedContributionsForStory.png)
 
 
 
