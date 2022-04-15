@@ -21,37 +21,37 @@
   <!--STORY INPUT AREA-->
   <main>
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" id="create_story_button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
-      BEGIN YOUR ADVENTURE
+    <button type="button" class="button" id="create_story_button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+      BEGIN YOUR ADVENTURE 🖋️
     </button>
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Create your Own Story</h5>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title" id="exampleModalLongTitle">Start Your Story Here</h5>
+        <!-- <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
-        </button>
+        </button> -->
       </div>
       <div class="modal-body">
         <section class="new-story" id="create-story">
           <p class="error-message"></p>
           <form class="new-story-form" id="create_form">
             <div id="title-input">
-              <label for="new-story-title">TITLE</label>
+              <label for="new-story-title">Title</label>
               <textarea class="title-input" name="new-story-title" rows="1"></textarea>
             </div>
             <div id="story-text-input">
-              <label for="new-story-text">STORY</label>
+              <label for="new-story-text">Story</label>
               <textarea class="story-text-input" name="new-story-text" rows="4"></textarea>
             </div>
           </form>
         </section>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" form="create_form" data-bs-dismiss="modal">CREATE</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="">Close</button>
+        <button type="submit" class="btn btn-primary" form="create_form" data-bs-dismiss="modal">Create</button>
       </div>
     </div>
   </div>
@@ -66,9 +66,9 @@
          <div class="creator">CREATED BY: <%= user %></div>
          <div>
           <% if(stories[story].iscomplete === false) {%>
-            <p class ='status'>STATUS: IN PROGRESS</p>
+            <p class ='status' id="status_false">Status: In Progress</p>
           <% } else { %>
-            <p class ='status'>STATUS: COMPLETED</p>
+            <p class ='status' id="status_true">Status: Complete</p>
           <% } %>
          </div>
         </header>

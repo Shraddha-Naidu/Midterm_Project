@@ -34,9 +34,9 @@
          <div class="creator">CREATED BY: <%= stories[story].name %></div>
          <div>
           <% if(stories[story].iscomplete === false) {%>
-            <p class ='status'>STATUS: IN PROGRESS</p>
+            <p class ='status' id="status_false">Status: In Progress</p>
           <% } else { %>
-            <p class ='status'>STATUS: COMPLETED</p>
+            <p class ='status' id="status_true">Status: Complete</p>
           <% } %>
          </div>
         </header>

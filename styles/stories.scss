@@ -12,18 +12,20 @@
 
 .title {
   font-weight: bolder;
+  font-size: large;
   margin-bottom: 2px;
   text-decoration: underline;
 }
 
 .creator {
-  font-size: small;
+  font-size: medium;
 }
 
 .content {
   margin-top: 2px;
   margin-bottom: 1em;
   border-bottom: 2px black;
+  font-size: large;
 }
 
 #char-count.red{
@@ -57,6 +59,14 @@ a:active {
 
 //STATUS TEXT
 .status {
-  font-size: small;
-
+  font-size: medium;
 }
+
+#status_true {
+  color:rgb(11, 121, 36)
+}
+
+#status_false {
+  color:rgb(121, 11, 11)
+}
+
