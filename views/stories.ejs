@@ -31,7 +31,7 @@
       <% for(let story in stories) { %>
         <header>
          <div class="title"><a href="/stories/<%= stories[story].id %>"><%= stories[story].title %></a></div>
-         <div class="creator">CREATED BY: <%= stories[story].owner_id %></div>
+         <div class="creator">CREATED BY: <%= stories[story].name %></div>
          <div>
           <% if(stories[story].iscomplete === false) {%>
             <p class ='status'>STATUS: IN PROGRESS</p>

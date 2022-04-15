@@ -27,7 +27,6 @@ const storiesQueries = require('../lib/helperFunctions')(db);
             userid: req.session.userid,
             user: req.session.name
           }
-          console.log(templateVars)
           res.render('owner_stories', templateVars);
         })
         .catch((err) => {
@@ -53,7 +52,6 @@ const storiesQueries = require('../lib/helperFunctions')(db);
       storiesQueries.getAllStories()
         .then((stories) => {
           const templateVars = {stories, user: req.session.name}
-          console.log(templateVars)
           res.render('stories', templateVars);
         })
         .catch((err) => {
