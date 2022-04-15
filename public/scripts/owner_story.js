@@ -56,6 +56,7 @@ $(document).ready(function() {
       type: 'PATCH',
       url: `/stories/${storyId}`,
       success: function(data) {
+        toggleStatus()
         clearContributions(storyId)
       }
     });
@@ -70,6 +71,10 @@ $(document).ready(function() {
         $('#contributions-container').empty()
       }
     })
+  }
+
+  const toggleStatus = () => {
+    $('.status').text("Status: Complete")
   }
 
 });
