@@ -1,9 +1,5 @@
 -- Drop and recreate Users table (Example)
 DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS stories CASCADE;
-DROP TABLE IF EXISTS contributions CASCADE;
-DROP TABLE IF EXISTS upvotes CASCADE;
-
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -12,23 +8,5 @@ CREATE TABLE users (
   password VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE stories (
-  id SERIAL PRIMARY KEY NOT NULL,
-  owner_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  title TEXT NOT NULL,
-  content TEXT NOT NULL,
-  IsComplete BOOLEAN NOT NULL DEFAULT FALSE
-);
 
-CREATE TABLE contributions (
-  id SERIAL PRIMARY KEY NOT NULL,
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  story_id INTEGER REFERENCES stories(id) ON DELETE CASCADE,
-  content TEXT NOT NULL
-);
 
-CREATE TABLE upvotes (
-  id SERIAL PRIMARY KEY NOT NULL,
-  contribution_id INTEGER REFERENCES contributions(id) ON DELETE CASCADE,
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
-)

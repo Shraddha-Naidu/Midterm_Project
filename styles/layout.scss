@@ -4,3 +4,126 @@ body,
 html {
   margin: 0;
 }
+
+#upvote_arrow{
+  padding-bottom: .5em;
+  &:hover {
+    color: greenyellow
+  }
+}
+
+.jumbotron {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5em;
+}
+
+.story_container{
+  border: .5em solid black;
+  // margin-top: 2em;
+  margin-bottom: 2em
+}
+
+.parchment {
+  display: flex;
+  flex-direction: column;
+  // position:absolute;
+    width: 75%;
+  // min-height: calc((1vw + 1vh) * 75);
+  /* center page with absolute position */
+  justify-content: center;
+  top: 0%; left: 50%;
+  // transform: translate(-50%, 0);
+  margin: 2em 0;
+    padding: 4em;
+    box-shadow: 2px 3px 20px black, 0 0 60px #8a4d0f inset;
+    background: #fffef0;
+  // filter: url(#wavy2);
+  > .author {
+    text-align: end;
+  }
+}
+
+#contribution_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // align-items: center;
+  width: 75%;
+  margin: auto;
+}
+
+.submit_buttons {
+  display:flex;
+  justify-content: space-between;
+  padding: 0.5em 0;
+}
+
+.submit_buttons button {
+    background-color: #228B22;
+    color: #fffef0;
+    border: none;
+    padding: .5em 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    -webkit-transition-duration: 03s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+    &:hover {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+    &:active {
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+     -webkit-transform: scale(1);
+     transform: scale(1);
+    }
+  }
+
+
+.card.owner:hover {
+  background-color: green;
+  color: #fffef0;
+}
+
+#complete_div {
+ display:flex;
+ justify-content: end;
+ margin: 0 auto;
+ width: 75%;
+ padding-bottom: 2em;
+ > #complete_button {
+   background-color: #228B22;
+   color: #fffef0;
+   border: none;
+   padding: .5em 1em;
+   cursor: pointer;
+   border-radius: 5px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+   -webkit-transition-duration: 03s;
+   transition-duration: 0.3s;
+   -webkit-transition-property: box-shadow, transform;
+   transition-property: box-shadow, transform;
+   &:hover {
+     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+     -webkit-transform: scale(1.1);
+     transform: scale(1.1);
+   }
+   &:active {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+   }
+ }
+}
+
+.text-header {
+  text-align: center;
+}
+
+.card .flex-row .m-3 .mt-5 .p-3 .w-75 .mx-auto {
+  background-color: #71875f;
+}

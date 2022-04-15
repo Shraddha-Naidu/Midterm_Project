@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <title>Story</title>
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/stories.css" type="text/css" />
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+
+  <!-- Font Awesome library for arrow in Nav-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <header>
+    <%- include('partials/_header') %>
+  </header>
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="story_container parchment">
+      <!-- <svg>
+        <filter id="wavy2">
+          <feTurbulence x="0" y="0" baseFrequency="0.02" numOctaves="5" seed="1"></feTurbulence>
+          <feDisplacementMap in="SourceGraphic" scale="20" />
+        </filter>
+      </svg> -->
+      <h1 class="display-4"><%= story.title %></h1>
+      <p class="lead"><%= story.content %></p>
+      <p class="author">Curated By <%= story.name %></p>
+    </div>
+  </div>
+  <div>
+    <% if(story.iscomplete === false) {%>
+      <p class ='status' id="status_false" style="margin-left: 160px; margin-bottom: 45px">Status: In Progress</p>
+    <% } else { %>
+      <p class ='status' id="status_true">Status: Complete</p>
+    <% } %>
+  </div>
+
+<% if(story.iscomplete === false) { %>
+  <form id="contribution_form">
+    <textarea id="contribution_text" rows=1 placeholder="New Contribution" name="text"></textarea>
+    <div class="submit_buttons">
+      <button class='add_button' type="submit">Add</button>
+      <output name="counter" class="counter" for="text_area">255</output>
+    </div>
+  </form>
+<% } %>
+<div class="text-header">Current Suggestions</div>
+  <div id="contributions-container"></div>
+
+
+
+   <!-- Bootstrap JavaScript Bundle with Popper -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+   <script type="text/javascript" src="/scripts/story.js"></script>
+   <script type="text/javascript" src="/scripts/char-count.js"></script>
+   <script> const storyId = <%= story.id %></script>
+   <script> const user_id = <%= user_id %></script>
+</body>
+</html>

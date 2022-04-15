@@ -1,0 +1,72 @@
+.page-title {
+  margin-left: 25%;
+  font-weight: bolder;
+}
+
+.all-stories-container {
+  flex: content;
+  margin-top: 2em;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.title {
+  font-weight: bolder;
+  font-size: large;
+  margin-bottom: 2px;
+  text-decoration: underline;
+}
+
+.creator {
+  font-size: medium;
+}
+
+.content {
+  margin-top: 2px;
+  margin-bottom: 1em;
+  border-bottom: 2px black;
+  font-size: large;
+}
+
+#char-count.red{
+  color:red
+}
+
+a:link {
+  color: rgb(6, 32, 6);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgb(221, 184, 129);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(11, 121, 36);
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: rgba(255, 204, 0, 0.73);
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+
+//STATUS TEXT
+.status {
+  font-size: medium;
+}
+
+#status_true {
+  color:rgb(11, 121, 36)
+}
+
+#status_false {
+  color:rgb(121, 11, 11)
+}
+
