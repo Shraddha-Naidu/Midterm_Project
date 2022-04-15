@@ -11,8 +11,10 @@
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/stories.css" type="text/css" />
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+
 
   <!-- Font Awesome library for arrow in Nav-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -37,6 +39,13 @@
     </div>
   </div>
   <div id="complete_div"><button id="complete_button">Complete</button></div>
+  <div>
+    <% if(story.iscomplete === false) {%>
+      <p class ='status' id="status_false" style="margin-left: 160px; margin-bottom: 45px">Status: In Progress</p>
+    <% } else { %>
+      <p class ='status' id="status_true" style="margin-left: 160px; margin-bottom: 45px">Status: Complete</p>
+    <% } %>
+  </div>
   <div class="text-header">Current Suggestions</div>
   <div id="contributions-container"></div>
 

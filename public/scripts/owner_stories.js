@@ -36,10 +36,8 @@ const loadStories = function () {
 
 $(document).ready(function () {
 
-//Loads tweets from db
-// loadStories();
 
-// New submitted tweet
+// New story
   $(".new-story-form").submit(function (event) {
     event.preventDefault();//prevents default submission behaviour
     if(!($(".story-text-input").val()) || !($(".title-input").val())) {
@@ -59,10 +57,7 @@ $(document).ready(function () {
         }
       })
     }
-      // .then(() => {
-      //     loadStories();
-      //     story.val("");
-      //   })
+
   })
 
   const closeModal = $('#btnSave').click(function() {
